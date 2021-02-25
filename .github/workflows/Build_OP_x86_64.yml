@@ -1,7 +1,7 @@
 #=================================================
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
-# Author: eSirPlayground1
+# Author: eSirPlayground
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -73,11 +73,30 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    #- name: Import external feeds
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
-    #    git clone "your_github_link" package/"your_folder_name"      
+    - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+
+    - name: Import external feeds
+      working-directory: ./openwrt
+      run: |	
+        git clone https://github.com/destan19/OpenAppFilter.git package/1应用过滤       
+
+    - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+        git clone https://gitlab.com/SoftEther/SoftEtherVPN.git package/SoftEtherVPN
+
+  - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/pymumu/smartdns.git package/smartdns
+
+   - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/ozon/luci-app-ttyd.git package/TTYD
 
     - name: Configuration Customization - Build_x86_64
       env:
