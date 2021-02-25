@@ -87,13 +87,12 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://gitlab.com/SoftEther/SoftEtherVPN.git package/SoftEtherVPN
-
-  - name: Import external feeds
+    - name: Import external feeds
       working-directory: ./openwrt
       run: |
         git clone https://github.com/pymumu/smartdns.git package/smartdns
 
-   - name: Import external feeds
+    - name: Import external feeds
       working-directory: ./openwrt
       run: |
         git clone https://github.com/ozon/luci-app-ttyd.git package/TTYD
